@@ -91,6 +91,9 @@ public class Lab8_RafaelDiaz extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         eliminar = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
+        jPanel8 = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTree1 = new javax.swing.JTree();
         jd_doctor = new javax.swing.JDialog();
         jTabbedPane2 = new javax.swing.JTabbedPane();
         jPanel5 = new javax.swing.JPanel();
@@ -539,6 +542,29 @@ public class Lab8_RafaelDiaz extends javax.swing.JFrame {
         );
 
         jTabbedPane1.addTab("Eliminar Paciente", jPanel3);
+
+        javax.swing.tree.DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("Personas");
+        jTree1.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
+        jScrollPane3.setViewportView(jTree1);
+
+        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
+        jPanel8.setLayout(jPanel8Layout);
+        jPanel8Layout.setHorizontalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addGap(92, 92, 92)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 599, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(134, Short.MAX_VALUE))
+        );
+        jPanel8Layout.setVerticalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 403, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(66, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("JTree", jPanel8);
 
         jd_paciente.getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, 830, 530));
 
@@ -1166,6 +1192,8 @@ public class Lab8_RafaelDiaz extends javax.swing.JFrame {
         tf_altura2.setText("");
         tf_peso2.setText("");
         tf_sexo2.setText("");
+        horario.setText("");
+        anios.setText("");
         DefaultComboBoxModel modelo = (DefaultComboBoxModel) cb_moddoc.getModel();
         modelo.addElement(d);
         DefaultComboBoxModel modelo1 = (DefaultComboBoxModel) eliminardoc.getModel();
@@ -1229,6 +1257,7 @@ public class Lab8_RafaelDiaz extends javax.swing.JFrame {
         DefaultComboBoxModel modelo = (DefaultComboBoxModel) paci.getModel();
         DefaultComboBoxModel modelo1 = (DefaultComboBoxModel) cb_moddoc.getModel();
         ((Doctores)modelo1.getSelectedItem()).getPacientes().add((Paciente) modelo.getSelectedItem());
+        modelo.removeElement(modelo.getSelectedItem());
     }//GEN-LAST:event_jButton4MouseClicked
 
     private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
@@ -1246,12 +1275,12 @@ public class Lab8_RafaelDiaz extends javax.swing.JFrame {
     private void cb_moddocItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cb_moddocItemStateChanged
         DefaultComboBoxModel modelo = (DefaultComboBoxModel) cb_moddoc.getModel();
         if (cb_moddoc.getSelectedIndex()>=0) {
-        tf_nombre2.setText(((Paciente)modelo.getSelectedItem()).getNombre());
-        tf_edad2.setText(Integer.toString(((Paciente)modelo.getSelectedItem()).getEdad()));
-        tf_id2.setText(((Paciente)modelo.getSelectedItem()).getId());
-        tf_altura2.setText(Double.toString(((Paciente)modelo.getSelectedItem()).getAltura()));
-        tf_peso2.setText(Double.toString(((Paciente)modelo.getSelectedItem()).getPeso()));
-        tf_sexo2.setText(((Paciente)modelo.getSelectedItem()).getSexo());
+        tf_nombre3.setText(((Doctores)modelo.getSelectedItem()).getNombre());
+        tf_edad3.setText(Integer.toString(((Doctores)modelo.getSelectedItem()).getEdad()));
+        tf_id3.setText(((Doctores)modelo.getSelectedItem()).getId());
+        tf_altura3.setText(Double.toString(((Doctores)modelo.getSelectedItem()).getAltura()));
+        tf_peso3.setText(Double.toString(((Doctores)modelo.getSelectedItem()).getPeso()));
+        tf_sexo3.setText(((Doctores)modelo.getSelectedItem()).getSexo());
         horario1.setText(((Doctores)modelo.getSelectedItem()).getHorario());
         anios1.setText(((Doctores)modelo.getSelectedItem()).getAnios());
         }
@@ -1365,10 +1394,13 @@ public class Lab8_RafaelDiaz extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTabbedPane jTabbedPane2;
+    private javax.swing.JTree jTree1;
     private javax.swing.JButton jb_Doctor;
     private javax.swing.JButton jb_alergia;
     private javax.swing.JButton jb_enfermedad;
