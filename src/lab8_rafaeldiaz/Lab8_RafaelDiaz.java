@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
+import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.DefaultTreeModel;
 
 /**
  *
@@ -93,7 +95,7 @@ public class Lab8_RafaelDiaz extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jPanel8 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTree1 = new javax.swing.JTree();
+        tree = new javax.swing.JTree();
         jd_doctor = new javax.swing.JDialog();
         jTabbedPane2 = new javax.swing.JTabbedPane();
         jPanel5 = new javax.swing.JPanel();
@@ -155,6 +157,9 @@ public class Lab8_RafaelDiaz extends javax.swing.JFrame {
         jPanel7 = new javax.swing.JPanel();
         eliminardoc = new javax.swing.JComboBox<>();
         jButton2 = new javax.swing.JButton();
+        jPanel9 = new javax.swing.JPanel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        tree1 = new javax.swing.JTree();
         jPanel4 = new javax.swing.JPanel();
         jb_paciente = new javax.swing.JButton();
         jb_Doctor = new javax.swing.JButton();
@@ -544,8 +549,8 @@ public class Lab8_RafaelDiaz extends javax.swing.JFrame {
         jTabbedPane1.addTab("Eliminar Paciente", jPanel3);
 
         javax.swing.tree.DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("Personas");
-        jTree1.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
-        jScrollPane3.setViewportView(jTree1);
+        tree.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
+        jScrollPane3.setViewportView(tree);
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
@@ -955,6 +960,29 @@ public class Lab8_RafaelDiaz extends javax.swing.JFrame {
 
         jTabbedPane2.addTab("Eliminar Doctor", jPanel7);
 
+        treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("Personas");
+        tree1.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
+        jScrollPane4.setViewportView(tree1);
+
+        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
+        jPanel9.setLayout(jPanel9Layout);
+        jPanel9Layout.setHorizontalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel9Layout.createSequentialGroup()
+                .addGap(50, 50, 50)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 641, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(47, Short.MAX_VALUE))
+        );
+        jPanel9Layout.setVerticalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel9Layout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 413, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(29, Short.MAX_VALUE))
+        );
+
+        jTabbedPane2.addTab("Jtree", jPanel9);
+
         javax.swing.GroupLayout jd_doctorLayout = new javax.swing.GroupLayout(jd_doctor.getContentPane());
         jd_doctor.getContentPane().setLayout(jd_doctorLayout);
         jd_doctorLayout.setHorizontalGroup(
@@ -1062,6 +1090,8 @@ public class Lab8_RafaelDiaz extends javax.swing.JFrame {
         modelo1.addElement(pa);
         DefaultComboBoxModel modelo2 = (DefaultComboBoxModel) paci.getModel();
         modelo2.addElement(pa);
+        
+        
     }//GEN-LAST:event_jb_guardarMouseClicked
 
     private void tf_idActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_idActionPerformed
@@ -1198,6 +1228,14 @@ public class Lab8_RafaelDiaz extends javax.swing.JFrame {
         modelo.addElement(d);
         DefaultComboBoxModel modelo1 = (DefaultComboBoxModel) eliminardoc.getModel();
         modelo1.addElement(d);
+        
+        DefaultTreeModel modelot = (DefaultTreeModel) tree.getModel();
+        DefaultMutableTreeNode raiz = (DefaultMutableTreeNode)modelot.getRoot();
+        DefaultMutableTreeNode doc = new DefaultMutableTreeNode(d);
+        raiz.add(doc);
+        modelot.reload();
+        DefaultTreeModel modelot1 = (DefaultTreeModel) tree1.getModel();
+        
     }//GEN-LAST:event_GuardarDocMouseClicked
 
     private void sabado1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sabado1ActionPerformed
@@ -1395,12 +1433,13 @@ public class Lab8_RafaelDiaz extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTabbedPane jTabbedPane2;
-    private javax.swing.JTree jTree1;
     private javax.swing.JButton jb_Doctor;
     private javax.swing.JButton jb_alergia;
     private javax.swing.JButton jb_enfermedad;
@@ -1448,6 +1487,8 @@ public class Lab8_RafaelDiaz extends javax.swing.JFrame {
     private javax.swing.JTextField tf_sexo1;
     private javax.swing.JTextField tf_sexo2;
     private javax.swing.JTextField tf_sexo3;
+    private javax.swing.JTree tree;
+    private javax.swing.JTree tree1;
     private javax.swing.JCheckBox viernes;
     private javax.swing.JCheckBox viernes1;
     // End of variables declaration//GEN-END:variables
