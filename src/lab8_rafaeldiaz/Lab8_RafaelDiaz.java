@@ -7,6 +7,7 @@ package lab8_rafaeldiaz;
 
 import java.util.Date;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -83,10 +84,12 @@ public class Lab8_RafaelDiaz extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         ta_causa1 = new javax.swing.JTextArea();
         cb_modpa = new javax.swing.JComboBox<>();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jb_alergia = new javax.swing.JButton();
+        jb_enfermedad = new javax.swing.JButton();
+        cb_organos = new javax.swing.JComboBox<>();
         jPanel3 = new javax.swing.JPanel();
+        eliminar = new javax.swing.JComboBox<>();
+        jButton1 = new javax.swing.JButton();
         jd_doctor = new javax.swing.JDialog();
         jPanel4 = new javax.swing.JPanel();
         jb_paciente = new javax.swing.JButton();
@@ -298,9 +301,19 @@ public class Lab8_RafaelDiaz extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Agregar Alergia");
+        jb_alergia.setText("Agregar Alergia");
+        jb_alergia.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jb_alergiaMouseClicked(evt);
+            }
+        });
 
-        jButton2.setText("Agregar enfermedad");
+        jb_enfermedad.setText("Agregar enfermedad");
+        jb_enfermedad.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jb_enfermedadMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -337,27 +350,24 @@ public class Lab8_RafaelDiaz extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(35, 35, 35)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(262, 262, 262)
-                                .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel18)
-                                            .addComponent(jLabel20))
-                                        .addGap(18, 18, 18)
-                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(tf_sangre1, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(54, 54, 54)
-                                        .addComponent(jButton2)))
-                                .addGap(0, 0, Short.MAX_VALUE))))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(cb_organos, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel2Layout.createSequentialGroup()
+                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel18)
+                                        .addComponent(jLabel20))
+                                    .addGap(18, 18, 18)
+                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(tf_sangre1, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(jPanel2Layout.createSequentialGroup()
+                                    .addComponent(jb_alergia, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(54, 54, 54)
+                                    .addComponent(jb_enfermedad))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 91, Short.MAX_VALUE)
+                        .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(20, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(162, 162, 162)
                         .addComponent(jb_mod, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -412,17 +422,17 @@ public class Lab8_RafaelDiaz extends javax.swing.JFrame {
                                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                         .addComponent(jLabel24)
                                         .addComponent(tf_peso1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(jb_alergia, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                                 .addGap(278, 278, 278)
-                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(jb_enfermedad, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(jLabel25)
                                 .addComponent(tf_sexo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(cb_organos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(19, 19, 19)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel14)
@@ -436,15 +446,35 @@ public class Lab8_RafaelDiaz extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Modificar Paciente", jPanel2);
 
+        jButton1.setText("Eliminar");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 825, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(213, 213, 213)
+                        .addComponent(eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 379, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(333, 333, 333)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(233, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 502, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(60, 60, 60)
+                .addComponent(eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(84, 84, 84)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(269, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Eliminar Paciente", jPanel3);
@@ -548,7 +578,8 @@ public class Lab8_RafaelDiaz extends javax.swing.JFrame {
         tf_sexo.setText("");
         DefaultComboBoxModel modelo = (DefaultComboBoxModel) cb_modpa.getModel();
         modelo.addElement(pa);
-        
+        DefaultComboBoxModel modelo1 = (DefaultComboBoxModel) eliminar.getModel();
+        modelo1.addElement(pa);
     }//GEN-LAST:event_jb_guardarMouseClicked
 
     private void tf_idActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_idActionPerformed
@@ -556,7 +587,29 @@ public class Lab8_RafaelDiaz extends javax.swing.JFrame {
     }//GEN-LAST:event_tf_idActionPerformed
 
     private void jb_modMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_modMouseClicked
-        // TODO add your handling code here:
+        DefaultComboBoxModel modelo = (DefaultComboBoxModel) cb_modpa.getModel();
+        ((Paciente)modelo.getSelectedItem()).setFecha_ingreso(fecha_ingreso1.getDate());
+        ((Paciente)modelo.getSelectedItem()).setFecha_dealta(fecha_dealta1.getDate());
+        ((Paciente)modelo.getSelectedItem()).setTipo_sangre(tf_sangre1.getText());
+        ((Paciente)modelo.getSelectedItem()).setCausa(ta_causa1.getText());
+        ((Paciente)modelo.getSelectedItem()).setNombre(tf_nombre1.getText());
+        ((Paciente)modelo.getSelectedItem()).setEdad(Integer.parseInt(tf_edad1.getText()));
+        ((Paciente)modelo.getSelectedItem()).setId(tf_id1.getText());
+        ((Paciente)modelo.getSelectedItem()).setAltura(Double.parseDouble(tf_altura1.getText()));
+        ((Paciente)modelo.getSelectedItem()).setPeso(Double.parseDouble(tf_peso1.getText()));
+        ((Paciente)modelo.getSelectedItem()).setSexo(tf_sexo1.getText());
+        fecha_ingreso1.setDate(new Date());
+        fecha_dealta1.setDate(new Date());
+        tf_sangre1.setText("");
+        ta_causa1.setText("");
+        tf_nombre1.setText("");
+        tf_edad1.setText("");
+        tf_id1.setText("");
+        tf_altura1.setText("");
+        tf_peso1.setText("");
+        tf_sexo1.setText("");
+        
+        
     }//GEN-LAST:event_jb_modMouseClicked
 
     private void tf_id1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_id1ActionPerformed
@@ -592,6 +645,34 @@ public class Lab8_RafaelDiaz extends javax.swing.JFrame {
     private void jb_pacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_pacienteActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jb_pacienteActionPerformed
+
+    private void jb_alergiaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_alergiaMouseClicked
+        String resp="s";
+        DefaultComboBoxModel modelo = (DefaultComboBoxModel) cb_modpa.getModel();
+        do{
+            String alergia = JOptionPane.showInputDialog("Ingrese Alergia");
+            ((Paciente)modelo.getSelectedItem()).getAlergias().add(alergia);
+            resp = JOptionPane.showInputDialog("Desea agregar otra alergia? s/n");
+        }while(resp.equals("s")||resp.equals("Si")||resp.equals("si")||resp.equals("S"));
+    }//GEN-LAST:event_jb_alergiaMouseClicked
+
+    private void jb_enfermedadMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_enfermedadMouseClicked
+        String resp="s";
+        DefaultComboBoxModel modelo = (DefaultComboBoxModel) cb_modpa.getModel();
+        do{
+            String enfermedad = JOptionPane.showInputDialog("Ingrese Enfermedad");
+            ((Paciente)modelo.getSelectedItem()).getAlergias().add(enfermedad);
+            resp = JOptionPane.showInputDialog("Desea agregar otra enfermedad? s/n");
+        }while(resp.equals("s")||resp.equals("Si")||resp.equals("si")||resp.equals("S"));
+    }//GEN-LAST:event_jb_enfermedadMouseClicked
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        DefaultComboBoxModel modelo = (DefaultComboBoxModel) eliminar.getModel();
+        DefaultComboBoxModel modelo1 = (DefaultComboBoxModel) cb_modpa.getModel();
+        modelo1.removeElement(modelo.getSelectedItem());
+        modelo.removeElement(modelo.getSelectedItem());
+        
+    }//GEN-LAST:event_jButton1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -630,13 +711,13 @@ public class Lab8_RafaelDiaz extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> cb_modpa;
+    private javax.swing.JComboBox<String> cb_organos;
+    private javax.swing.JComboBox<String> eliminar;
     private com.toedter.calendar.JDateChooser fecha_dealta;
     private com.toedter.calendar.JDateChooser fecha_dealta1;
     private com.toedter.calendar.JDateChooser fecha_ingreso;
     private com.toedter.calendar.JDateChooser fecha_ingreso1;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -670,6 +751,8 @@ public class Lab8_RafaelDiaz extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JButton jb_Doctor;
+    private javax.swing.JButton jb_alergia;
+    private javax.swing.JButton jb_enfermedad;
     private javax.swing.JButton jb_guardar;
     private javax.swing.JButton jb_mod;
     private javax.swing.JButton jb_paciente;
