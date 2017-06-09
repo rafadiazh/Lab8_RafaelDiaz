@@ -147,7 +147,8 @@ public class Lab8_RafaelDiaz extends javax.swing.JFrame {
         jLabel43 = new javax.swing.JLabel();
         cb_moddoc = new javax.swing.JComboBox<>();
         jButton3 = new javax.swing.JButton();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        paci = new javax.swing.JComboBox<>();
+        jButton4 = new javax.swing.JButton();
         jPanel7 = new javax.swing.JPanel();
         eliminardoc = new javax.swing.JComboBox<>();
         jButton2 = new javax.swing.JButton();
@@ -747,27 +748,43 @@ public class Lab8_RafaelDiaz extends javax.swing.JFrame {
         jLabel43.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         jLabel43.setText("Modificar Doctor");
 
-        jButton3.setText("jButton3");
+        cb_moddoc.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cb_moddocItemStateChanged(evt);
+            }
+        });
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jButton3.setText("Agregar Especialidades");
+        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton3MouseClicked(evt);
+            }
+        });
+
+        jButton4.setText("Agregar Paciente");
+        jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton4MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(68, 68, 68)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addContainerGap()
+                        .addComponent(paci, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton4))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
                         .addComponent(cb_moddoc, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel43))
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addGap(67, 67, 67)
-                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton3)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(246, Short.MAX_VALUE))
+                        .addComponent(jLabel43)))
+                .addContainerGap(188, Short.MAX_VALUE))
             .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel6Layout.createSequentialGroup()
                     .addGap(68, 68, 68)
@@ -818,11 +835,13 @@ public class Lab8_RafaelDiaz extends javax.swing.JFrame {
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addGap(11, 11, 11)
                         .addComponent(cb_moddoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 294, Short.MAX_VALUE)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
-                .addComponent(jButton3)
-                .addGap(49, 49, 49))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 308, Short.MAX_VALUE)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(paci, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton4))
+                .addGap(18, 18, 18)
+                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20))
             .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel6Layout.createSequentialGroup()
                     .addGap(68, 68, 68)
@@ -1015,6 +1034,8 @@ public class Lab8_RafaelDiaz extends javax.swing.JFrame {
         modelo.addElement(pa);
         DefaultComboBoxModel modelo1 = (DefaultComboBoxModel) eliminar.getModel();
         modelo1.addElement(pa);
+        DefaultComboBoxModel modelo2 = (DefaultComboBoxModel) paci.getModel();
+        modelo2.addElement(pa);
     }//GEN-LAST:event_jb_guardarMouseClicked
 
     private void tf_idActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_idActionPerformed
@@ -1043,8 +1064,6 @@ public class Lab8_RafaelDiaz extends javax.swing.JFrame {
         tf_altura1.setText("");
         tf_peso1.setText("");
         tf_sexo1.setText("");
-        
-        
     }//GEN-LAST:event_jb_modMouseClicked
 
     private void tf_id1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_id1ActionPerformed
@@ -1106,7 +1125,8 @@ public class Lab8_RafaelDiaz extends javax.swing.JFrame {
         DefaultComboBoxModel modelo1 = (DefaultComboBoxModel) cb_modpa.getModel();
         modelo1.removeElement(modelo.getSelectedItem());
         modelo.removeElement(modelo.getSelectedItem());
-        
+        DefaultComboBoxModel modelo2 = (DefaultComboBoxModel) paci.getModel();
+        modelo2.removeElement(modelo.getSelectedItem());
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void tf_id2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_id2ActionPerformed
@@ -1118,7 +1138,7 @@ public class Lab8_RafaelDiaz extends javax.swing.JFrame {
     }//GEN-LAST:event_sabadoActionPerformed
 
     private void GuardarDocMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_GuardarDocMouseClicked
-        Doctores d = new Doctores(anios.getText(), horario.getText(),tf_nombre.getText(), Integer.parseInt(tf_edad.getText()), tf_id.getText(), Double.parseDouble(tf_altura.getText()), Double.parseDouble(tf_peso.getText()), tf_sexo.getText() );
+        Doctores d = new Doctores(anios.getText(), horario.getText(),tf_nombre2.getText(), Integer.parseInt(tf_edad2.getText()), tf_id2.getText(), Double.parseDouble(tf_altura2.getText()), Double.parseDouble(tf_peso2.getText()), tf_sexo2.getText() );
         if (lunes.isSelected()) {
             d.getDias_trabajo().add("Lunes");
         }
@@ -1205,6 +1225,39 @@ public class Lab8_RafaelDiaz extends javax.swing.JFrame {
         modelo.removeElement(modelo.getSelectedItem());
     }//GEN-LAST:event_jButton2MouseClicked
 
+    private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
+        DefaultComboBoxModel modelo = (DefaultComboBoxModel) paci.getModel();
+        DefaultComboBoxModel modelo1 = (DefaultComboBoxModel) cb_moddoc.getModel();
+        ((Doctores)modelo1.getSelectedItem()).getPacientes().add((Paciente) modelo.getSelectedItem());
+    }//GEN-LAST:event_jButton4MouseClicked
+
+    private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
+        
+        String resp="s";
+        DefaultComboBoxModel modelo = (DefaultComboBoxModel) cb_moddoc.getModel();
+        do{
+            String especialidad = JOptionPane.showInputDialog("Ingrese Especialidad");
+            ((Doctores)modelo.getSelectedItem()).getEspecialidades().add(especialidad);
+            resp = JOptionPane.showInputDialog("Desea agregar otra especialidad? s/n");
+        }while(resp.equals("s")||resp.equals("Si")||resp.equals("si")||resp.equals("S"));
+        
+    }//GEN-LAST:event_jButton3MouseClicked
+
+    private void cb_moddocItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cb_moddocItemStateChanged
+        DefaultComboBoxModel modelo = (DefaultComboBoxModel) cb_moddoc.getModel();
+        if (cb_moddoc.getSelectedIndex()>=0) {
+        tf_nombre2.setText(((Paciente)modelo.getSelectedItem()).getNombre());
+        tf_edad2.setText(Integer.toString(((Paciente)modelo.getSelectedItem()).getEdad()));
+        tf_id2.setText(((Paciente)modelo.getSelectedItem()).getId());
+        tf_altura2.setText(Double.toString(((Paciente)modelo.getSelectedItem()).getAltura()));
+        tf_peso2.setText(Double.toString(((Paciente)modelo.getSelectedItem()).getPeso()));
+        tf_sexo2.setText(((Paciente)modelo.getSelectedItem()).getSexo());
+        horario1.setText(((Doctores)modelo.getSelectedItem()).getHorario());
+        anios1.setText(((Doctores)modelo.getSelectedItem()).getAnios());
+        }
+        
+    }//GEN-LAST:event_cb_moddocItemStateChanged
+
     /**
      * @param args the command line arguments
      */
@@ -1261,7 +1314,7 @@ public class Lab8_RafaelDiaz extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1332,6 +1385,7 @@ public class Lab8_RafaelDiaz extends javax.swing.JFrame {
     private javax.swing.JCheckBox martes1;
     private javax.swing.JCheckBox miercoles;
     private javax.swing.JCheckBox miercoles1;
+    private javax.swing.JComboBox<String> paci;
     private javax.swing.JCheckBox sabado;
     private javax.swing.JCheckBox sabado1;
     private javax.swing.JTextArea ta_causa;
