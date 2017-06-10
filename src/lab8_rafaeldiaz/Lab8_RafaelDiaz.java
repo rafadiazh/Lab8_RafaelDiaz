@@ -93,9 +93,6 @@ public class Lab8_RafaelDiaz extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         eliminar = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
-        jPanel8 = new javax.swing.JPanel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        tree = new javax.swing.JTree();
         jd_doctor = new javax.swing.JDialog();
         jTabbedPane2 = new javax.swing.JTabbedPane();
         jPanel5 = new javax.swing.JPanel();
@@ -160,6 +157,7 @@ public class Lab8_RafaelDiaz extends javax.swing.JFrame {
         jPanel9 = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         tree1 = new javax.swing.JTree();
+        jLabel44 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jb_paciente = new javax.swing.JButton();
         jb_Doctor = new javax.swing.JButton();
@@ -547,29 +545,6 @@ public class Lab8_RafaelDiaz extends javax.swing.JFrame {
         );
 
         jTabbedPane1.addTab("Eliminar Paciente", jPanel3);
-
-        javax.swing.tree.DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("Personas");
-        tree.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
-        jScrollPane3.setViewportView(tree);
-
-        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
-        jPanel8.setLayout(jPanel8Layout);
-        jPanel8Layout.setHorizontalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel8Layout.createSequentialGroup()
-                .addGap(92, 92, 92)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 599, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(134, Short.MAX_VALUE))
-        );
-        jPanel8Layout.setVerticalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel8Layout.createSequentialGroup()
-                .addGap(33, 33, 33)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 403, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(66, Short.MAX_VALUE))
-        );
-
-        jTabbedPane1.addTab("JTree", jPanel8);
 
         jd_paciente.getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, 830, 530));
 
@@ -960,25 +935,34 @@ public class Lab8_RafaelDiaz extends javax.swing.JFrame {
 
         jTabbedPane2.addTab("Eliminar Doctor", jPanel7);
 
-        treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("Personas");
+        javax.swing.tree.DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("Personas");
         tree1.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
         jScrollPane4.setViewportView(tree1);
+
+        jLabel44.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel44.setText("Debe de Modificar antes de que aparezcan los doctores y los pacientes");
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
         jPanel9Layout.setHorizontalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel9Layout.createSequentialGroup()
-                .addGap(50, 50, 50)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 641, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(47, Short.MAX_VALUE))
+                .addGap(67, 67, 67)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 590, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel9Layout.createSequentialGroup()
+                        .addGap(17, 17, 17)
+                        .addComponent(jLabel44)))
+                .addContainerGap(81, Short.MAX_VALUE))
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel9Layout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 413, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(29, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
+                .addContainerGap(75, Short.MAX_VALUE)
+                .addComponent(jLabel44)
+                .addGap(46, 46, 46)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(69, 69, 69))
         );
 
         jTabbedPane2.addTab("Jtree", jPanel9);
@@ -1224,17 +1208,20 @@ public class Lab8_RafaelDiaz extends javax.swing.JFrame {
         tf_sexo2.setText("");
         horario.setText("");
         anios.setText("");
+        lunes.setSelected(false);
+        martes.setSelected(false);
+        miercoles.setSelected(false);
+        jueves.setSelected(false);
+        viernes.setSelected(false);
+        sabado.setSelected(false);
+        domingo.setSelected(false);
+                
         DefaultComboBoxModel modelo = (DefaultComboBoxModel) cb_moddoc.getModel();
         modelo.addElement(d);
         DefaultComboBoxModel modelo1 = (DefaultComboBoxModel) eliminardoc.getModel();
         modelo1.addElement(d);
         
-        DefaultTreeModel modelot = (DefaultTreeModel) tree.getModel();
-        DefaultMutableTreeNode raiz = (DefaultMutableTreeNode)modelot.getRoot();
-        DefaultMutableTreeNode doc = new DefaultMutableTreeNode(d);
-        raiz.add(doc);
-        modelot.reload();
-        DefaultTreeModel modelot1 = (DefaultTreeModel) tree1.getModel();
+        
         
     }//GEN-LAST:event_GuardarDocMouseClicked
 
@@ -1278,6 +1265,14 @@ public class Lab8_RafaelDiaz extends javax.swing.JFrame {
             ((Doctores)modelo.getSelectedItem()).getDias_trabajo().add("Domingo");
         }
         }
+        DefaultTreeModel modelot = (DefaultTreeModel) tree1.getModel();
+        DefaultMutableTreeNode raiz = (DefaultMutableTreeNode)modelot.getRoot();
+        DefaultMutableTreeNode doc = new DefaultMutableTreeNode(((Doctores)modelo.getSelectedItem()));
+        DefaultMutableTreeNode paciente = new DefaultMutableTreeNode(((Doctores)modelo.getSelectedItem()).getPacientes());
+        doc.add(paciente);
+        raiz.add(doc);
+        modelot.reload();
+        
     }//GEN-LAST:event_ModDoc1MouseClicked
 
     private void tf_id3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_id3ActionPerformed
@@ -1420,6 +1415,7 @@ public class Lab8_RafaelDiaz extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel41;
     private javax.swing.JLabel jLabel42;
     private javax.swing.JLabel jLabel43;
+    private javax.swing.JLabel jLabel44;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -1432,11 +1428,9 @@ public class Lab8_RafaelDiaz extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
-    private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTabbedPane jTabbedPane2;
@@ -1487,7 +1481,6 @@ public class Lab8_RafaelDiaz extends javax.swing.JFrame {
     private javax.swing.JTextField tf_sexo1;
     private javax.swing.JTextField tf_sexo2;
     private javax.swing.JTextField tf_sexo3;
-    private javax.swing.JTree tree;
     private javax.swing.JTree tree1;
     private javax.swing.JCheckBox viernes;
     private javax.swing.JCheckBox viernes1;

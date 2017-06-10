@@ -5,11 +5,13 @@
  */
 package lab8_rafaeldiaz;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Rafael
  */
-public class Personas {
+public class Personas implements Serializable{
     String nombre;
     int edad;
     String id;
